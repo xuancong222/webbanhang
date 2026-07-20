@@ -106,7 +106,7 @@ const PRODUCTS = [
 
   ,{
     id: "5",
-    title: "Tên sản phẩm mới",
+    title: "App Người Que nói đạo lý",
     subtitle: "Mô tả ngắn",
     discount: "-20%",
     isNew: true,
@@ -125,3 +125,22 @@ const PRODUCTS = [
   }
   */
 ];
+,{
+    id: "5",
+    title: "Tên sản phẩm mới",
+    subtitle: "Mô tả ngắn",
+    discount: "-20%",
+    isNew: true,
+    typeLabel: "App",
+    typeIcon: "📱",
+    gradient: "linear-gradient(165deg,#2A1B5C,#141024 65%)",
+    youtube: "",
+    priceNow: "500.000đ",
+    priceOld: "700.000đ",
+    desc: "Mô tả dài cho trang chi tiết.",
+    features: [
+      "Tính năng 1",
+      "Tính năng 2",
+      "Tính năng 3"
+    ]
+  }
