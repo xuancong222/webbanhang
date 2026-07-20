@@ -98,49 +98,22 @@ const PRODUCTS = [
       "Định dạng nội dung tăng độ tin cậy, dễ viral",
       "Phù hợp ngành mỹ phẩm, thực phẩm chức năng"
     ]
-  }
-
-  /* ĐỂ THÊM SẢN PHẨM MỚI: copy khối mẫu bên dưới (bỏ dấu /* và * /),
-     dán vào ngay TRƯỚC dấu ] ở cuối file, nhớ thêm dấu phẩy , sau khối
-     phía trên nó.
-
-  ,{
+  }, 
+   {
     id: "5",
-    title: "App Người Que nói đạo lý",
-    subtitle: "Mô tả ngắn",
-    discount: "-20%",
-    isNew: true,
+    title: "App video người que",
+    subtitle: "Test quảng cáo hàng nói có đúng không?",
+    discount: "-48%",
+    isNew: false,
     typeLabel: "App",
     typeIcon: "📱",
-    gradient: "linear-gradient(165deg,#2A1B5C,#141024 65%)",
+    gradient: "linear-gradient(165deg,#3C1030,#0F0A22 65%)",
     youtube: "",
-    priceNow: "500.000đ",
-    priceOld: "700.000đ",
-    desc: "Mô tả dài cho trang chi tiết.",
+    priceNow: "390.000đ",
+    priceOld: "750.000đ",
+    desc: "App tạo video dạng kiểm chứng/test sản phẩm mỹ phẩm — định dạng nội dung đang được ưa chuộng, giúp tăng độ tin cậy cho sản phẩm khi quảng cáo.",
     features: [
-      "Tính năng 1",
-      "Tính năng 2",
-      "Tính năng 3"
+      "Kịch bản kiểm chứng sản phẩm tự động",
+      "Định dạng nội dung tăng độ tin cậy, dễ viral",
+      "Phù hợp ngành mỹ phẩm, thực phẩm chức năng"
     ]
-  }
-  */
-];
-,{
-    id: "5",
-    title: "Tên sản phẩm mới",
-    subtitle: "Mô tả ngắn",
-    discount: "-20%",
-    isNew: true,
-    typeLabel: "App",
-    typeIcon: "📱",
-    gradient: "linear-gradient(165deg,#2A1B5C,#141024 65%)",
-    youtube: "",
-    priceNow: "500.000đ",
-    priceOld: "700.000đ",
-    desc: "Mô tả dài cho trang chi tiết.",
-    features: [
-      "Tính năng 1",
-      "Tính năng 2",
-      "Tính năng 3"
-    ]
-  }
