@@ -162,9 +162,6 @@
     aspect-ratio:3/4; position:relative; display:flex; flex-direction:column; justify-content:space-between; padding:10px;
     background:linear-gradient(165deg,#2A1B5C,#141024 65%);
   }
-  .case-thumb.c2{background:linear-gradient(165deg,#12203F,#141024 65%);}
-  .case-thumb.c3{background:linear-gradient(165deg,#3C1030,#141024 65%);}
-  .case-thumb.c4{background:linear-gradient(165deg,#3C1030,#0F0A22 65%);}
   .badge-row{display:flex; justify-content:space-between; align-items:flex-start;}
   .tag-chip{
     font-size:10px; font-weight:700; padding:4px 8px; border-radius:999px; color:#fff;
@@ -228,6 +225,41 @@
   .reveal{opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1; transform:translateY(0);}
 
+  /* ===== TRANG CHI TIẾT (nhúng chung trong file này) ===== */
+  #detailView{display:none;}
+  .d-wrap{max-width:920px; margin:0 auto; padding:40px 32px 100px;}
+  .d-breadcrumb{font-size:13px; color:var(--text-dim); margin-bottom:22px;}
+  .d-breadcrumb a:hover{color:var(--purple-soft);}
+  .d-cover{
+    aspect-ratio:16/7; border-radius:18px; margin-bottom:32px; position:relative; overflow:hidden;
+    display:flex; align-items:flex-start; padding:20px;
+  }
+  .d-title{font-size:clamp(26px,3.4vw,38px); margin-bottom:14px; line-height:1.2;}
+  .d-subtitle{font-size:16px; color:var(--text-dim); margin-bottom:30px;}
+  .d-price-row{display:flex; align-items:center; gap:14px; margin-bottom:34px; flex-wrap:wrap;}
+  .d-price-now{font-family:'Fraunces', serif; font-size:28px; font-weight:600; color:var(--purple-soft);}
+  .d-price-old{font-size:16px; color:var(--text-dim); text-decoration:line-through;}
+  .d-cta-row{display:flex; gap:14px; margin-bottom:44px; flex-wrap:wrap;}
+  .btn.zalo{background:#0068FF; color:#fff;}
+  .d-section{margin-bottom:40px;}
+  .d-section h2{font-size:20px; margin-bottom:16px;}
+  .d-features{list-style:none; display:flex; flex-direction:column; gap:12px;}
+  .d-features li{
+    display:flex; gap:12px; align-items:flex-start; font-size:14.5px; color:var(--text-dim);
+    background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px;
+  }
+  .d-features li .dot{
+    width:20px; height:20px; border-radius:6px; background:rgba(139,92,246,0.16); color:var(--purple-soft);
+    display:flex; align-items:center; justify-content:center; font-size:11px; flex-shrink:0; margin-top:1px;
+  }
+  .d-desc{font-size:15px; color:var(--text-dim);}
+  .d-contact-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:28px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  }
+  .d-contact-card h3{font-size:17px; margin-bottom:6px;}
+  .d-contact-card p{font-size:13.5px; color:var(--text-dim);}
+
   @media (max-width:980px){
     .sidebar{position:fixed; left:-260px; z-index:60; transition:left .2s ease; box-shadow:0 0 40px rgba(0,0,0,0.5);}
     .sidebar.open{left:0;}
@@ -239,6 +271,8 @@
     .metrics{grid-template-columns:repeat(2,1fr); row-gap:24px;}
     .testireel{grid-template-columns:1fr;}
     .hero, .flash-strip, .cases{padding-left:16px; padding-right:16px;}
+    .d-wrap{padding:28px 18px 80px;}
+    .d-contact-card{flex-direction:column; align-items:flex-start;}
   }
 </style>
 </head>
@@ -250,7 +284,7 @@
     <div class="sb-logo"><span class="icon">✦</span>AI Templates</div>
 
     <div class="sb-group-label">Khám phá</div>
-    <a class="sb-item active"><span class="ico">🏠</span>Trang chủ</a>
+    <a class="sb-item active" href="#/"><span class="ico">🏠</span>Trang chủ</a>
     <a class="sb-item"><span class="ico">📄</span>Prompt miễn phí</a>
 
     <div class="sb-group-label">Sản phẩm</div>
@@ -271,7 +305,7 @@
     <header class="topbar">
       <div class="brand"><span class="bicon">✦</span>Mẫu Làm<span class="accent">Video</span></div>
       <nav class="topnav">
-        <a class="active">Trang chủ</a>
+        <a class="active" href="#/">Trang chủ</a>
         <a>Sản phẩm ▾</a>
         <a>Bảng giá</a>
         <a>Đánh giá AI</a>
@@ -283,99 +317,142 @@
       </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-card">
-        <div class="hero-left" style="flex-direction:column;">
-          <div class="hero-icon">🎥</div>
-          <div class="badge-pill">✦ App tạo video tự động miễn phí credit</div>
-          <h1>Tools hỗ trợ tạo <span class="hl">video AI Veo3</span> tốt nhất</h1>
-          <p class="lead">Dùng thử ngay, workflow tạo ảnh & video AI Veo3 chuyên nghiệp, nhanh chóng — không cần kỹ năng viết prompt.</p>
-          <a href="#start" class="btn">Dùng thử ngay →</a>
+    <!-- ========== TRANG CHỦ ========== -->
+    <div id="homeView">
+      <section class="hero">
+        <div class="hero-card">
+          <div class="hero-left" style="flex-direction:column;">
+            <div class="hero-icon">🎥</div>
+            <div class="badge-pill">✦ App tạo video tự động miễn phí credit</div>
+            <h1>Tools hỗ trợ tạo <span class="hl">video AI Veo3</span> tốt nhất</h1>
+            <p class="lead">Dùng thử ngay, workflow tạo ảnh & video AI Veo3 chuyên nghiệp, nhanh chóng — không cần kỹ năng viết prompt.</p>
+            <a href="#start" class="btn">Dùng thử ngay →</a>
+          </div>
+          <div class="hero-preview">
+            <div class="bar"><span></span><span></span><span></span></div>
+            <div class="thumbs"><div></div><div></div><div></div><div></div></div>
+          </div>
         </div>
-        <div class="hero-preview">
-          <div class="bar"><span></span><span></span><span></span></div>
-          <div class="thumbs"><div></div><div></div><div></div><div></div></div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="flash-strip">
-      <div class="flash-head">
-        <div class="flash-icon">⚡</div>
-        <div class="flash-title"><em>Flash</em> Sale</div>
-        <span class="pill-orange">Giảm sốc</span>
-        <a href="#cases" class="see-all">Xem tất cả →</a>
-      </div>
-      <div class="flash-sub">
-        <span>Ưu đãi có thời hạn</span>
-        <span class="countdown" id="countdown">⏱ 24d 23:34:46</span>
-      </div>
-    </section>
-
-    <section id="cases" style="padding-top:0;">
-      <div class="cases" id="casesGrid"></div>
-    </section>
-
-    <section id="how">
-      <div class="section-head">
-        <div class="eyebrow">Quy trình 3 bước</div>
-        <h2>Từ sản phẩm đến video, không qua trung gian</h2>
-        <p>Mỗi bước loại bỏ phần khó nhất: viết prompt đúng ý và đúng chuẩn của từng công cụ AI.</p>
-      </div>
-      <div class="steps">
-        <div class="step-card reveal">
-          <div class="num mono">01</div>
-          <h3>Nhập thông tin sản phẩm</h3>
-          <p>Ngành hàng, phong cách, đối tượng khách hàng — chỉ cần vài dòng ngôn ngữ tự nhiên.</p>
+      <section class="flash-strip">
+        <div class="flash-head">
+          <div class="flash-icon">⚡</div>
+          <div class="flash-title"><em>Flash</em> Sale</div>
+          <span class="pill-orange">Giảm sốc</span>
+          <a href="#cases" class="see-all">Xem tất cả →</a>
         </div>
-        <div class="step-card reveal">
-          <div class="num mono">02</div>
-          <h3>Chatbot soạn prompt chuẩn</h3>
-          <p>Tối ưu riêng cho từng công cụ: bố cục cảnh, ánh sáng, chuyển động máy quay.</p>
+        <div class="flash-sub">
+          <span>Ưu đãi có thời hạn</span>
+          <span class="countdown" id="countdown">⏱ 24d 23:34:46</span>
         </div>
-        <div class="step-card reveal">
-          <div class="num mono">03</div>
-          <h3>Dán vào công cụ AI</h3>
-          <p>Chạy trên Sora, Runway, Pika hoặc Veo3 để nhận video hoàn chỉnh.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="metrics-band">
-      <div class="metrics">
-        <div class="metric"><div class="big">3 phút</div><div class="lbl mono">TỪ Ý TƯỞNG ĐẾN PROMPT</div></div>
-        <div class="metric"><div class="big">4+</div><div class="lbl mono">CÔNG CỤ AI HỖ TRỢ</div></div>
-        <div class="metric"><div class="big">0</div><div class="lbl mono">KỸ NĂNG PROMPT CẦN CÓ</div></div>
-        <div class="metric"><div class="big">24/7</div><div class="lbl mono">CHATBOT LUÔN SẴN SÀNG</div></div>
+      <section id="cases" style="padding-top:0;">
+        <div class="cases" id="casesGrid"></div>
+      </section>
+
+      <section id="how">
+        <div class="section-head">
+          <div class="eyebrow">Quy trình 3 bước</div>
+          <h2>Từ sản phẩm đến video, không qua trung gian</h2>
+          <p>Mỗi bước loại bỏ phần khó nhất: viết prompt đúng ý và đúng chuẩn của từng công cụ AI.</p>
+        </div>
+        <div class="steps">
+          <div class="step-card reveal">
+            <div class="num mono">01</div>
+            <h3>Nhập thông tin sản phẩm</h3>
+            <p>Ngành hàng, phong cách, đối tượng khách hàng — chỉ cần vài dòng ngôn ngữ tự nhiên.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="num mono">02</div>
+            <h3>Chatbot soạn prompt chuẩn</h3>
+            <p>Tối ưu riêng cho từng công cụ: bố cục cảnh, ánh sáng, chuyển động máy quay.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="num mono">03</div>
+            <h3>Dán vào công cụ AI</h3>
+            <p>Chạy trên Sora, Runway, Pika hoặc Veo3 để nhận video hoàn chỉnh.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="metrics-band">
+        <div class="metrics">
+          <div class="metric"><div class="big">3 phút</div><div class="lbl mono">TỪ Ý TƯỞNG ĐẾN PROMPT</div></div>
+          <div class="metric"><div class="big">4+</div><div class="lbl mono">CÔNG CỤ AI HỖ TRỢ</div></div>
+          <div class="metric"><div class="big">0</div><div class="lbl mono">KỸ NĂNG PROMPT CẦN CÓ</div></div>
+          <div class="metric"><div class="big">24/7</div><div class="lbl mono">CHATBOT LUÔN SẴN SÀNG</div></div>
+        </div>
       </div>
+
+      <section id="reviews">
+        <div class="section-head">
+          <div class="eyebrow">Người dùng nói gì</div>
+          <h2>Từ người bán hàng nhỏ lẻ đến agency</h2>
+        </div>
+        <div class="testireel">
+          <div class="testi">
+            <p class="quote">"Trước đây mình mất cả buổi để nghĩ prompt mà video vẫn lệch ý. Giờ chatbot ra prompt đúng phong cách chỉ trong một lần chat."</p>
+            <div class="who"><div class="avatar"></div><div><div class="name">Thu Hà</div><div class="role">Chủ shop thời trang nữ</div></div></div>
+          </div>
+          <div class="testi">
+            <p class="quote">"Team mình dùng để ra hàng loạt video review giấu mặt cho affiliate, tốc độ sản xuất tăng gấp mấy lần."</p>
+            <div class="who"><div class="avatar"></div><div><div class="name">Minh Tuấn</div><div class="role">Affiliate marketer</div></div></div>
+          </div>
+          <div class="testi">
+            <p class="quote">"Không cần học prompt engineering, chỉ cần mô tả sản phẩm như đang nói chuyện với đồng nghiệp."</p>
+            <div class="who"><div class="avatar"></div><div><div class="name">Ngọc Anh</div><div class="role">Content creator</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="start" class="final-cta">
+        <h2>Sẵn sàng tạo video đầu tiên?</h2>
+        <p>Miễn phí để bắt đầu. Không cần kinh nghiệm dựng video hay viết prompt.</p>
+        <a href="#" class="btn">Đăng ký / Đăng nhập</a>
+      </section>
     </div>
 
-    <section id="reviews">
-      <div class="section-head">
-        <div class="eyebrow">Người dùng nói gì</div>
-        <h2>Từ người bán hàng nhỏ lẻ đến agency</h2>
-      </div>
-      <div class="testireel">
-        <div class="testi">
-          <p class="quote">"Trước đây mình mất cả buổi để nghĩ prompt mà video vẫn lệch ý. Giờ chatbot ra prompt đúng phong cách chỉ trong một lần chat."</p>
-          <div class="who"><div class="avatar"></div><div><div class="name">Thu Hà</div><div class="role">Chủ shop thời trang nữ</div></div></div>
-        </div>
-        <div class="testi">
-          <p class="quote">"Team mình dùng để ra hàng loạt video review giấu mặt cho affiliate, tốc độ sản xuất tăng gấp mấy lần."</p>
-          <div class="who"><div class="avatar"></div><div><div class="name">Minh Tuấn</div><div class="role">Affiliate marketer</div></div></div>
-        </div>
-        <div class="testi">
-          <p class="quote">"Không cần học prompt engineering, chỉ cần mô tả sản phẩm như đang nói chuyện với đồng nghiệp."</p>
-          <div class="who"><div class="avatar"></div><div><div class="name">Ngọc Anh</div><div class="role">Content creator</div></div></div>
-        </div>
-      </div>
-    </section>
+    <!-- ========== TRANG CHI TIẾT SẢN PHẨM ========== -->
+    <div id="detailView">
+      <div class="d-wrap">
+        <div class="d-breadcrumb"><a href="#/">Trang chủ</a> / <a href="#/">Sản phẩm</a> / <span id="pCrumb"></span></div>
 
-    <section id="start" class="final-cta">
-      <h2>Sẵn sàng tạo video đầu tiên?</h2>
-      <p>Miễn phí để bắt đầu. Không cần kinh nghiệm dựng video hay viết prompt.</p>
-      <a href="#" class="btn">Đăng ký / Đăng nhập</a>
-    </section>
+        <div class="d-cover" id="pCover"></div>
+
+        <h1 class="d-title" id="pTitle"></h1>
+        <p class="d-subtitle" id="pSubtitle"></p>
+
+        <div class="d-price-row">
+          <span class="d-price-now" id="pPriceNow"></span>
+          <span class="d-price-old" id="pPriceOld"></span>
+        </div>
+
+        <div class="d-cta-row">
+          <a href="https://zalo.me/0342894222" target="_blank" rel="noopener" class="btn zalo">💬 Liên hệ qua Zalo</a>
+          <a href="#start" class="btn">Dùng thử ngay →</a>
+        </div>
+
+        <div class="d-section">
+          <h2>Mô tả</h2>
+          <p class="d-desc" id="pDesc"></p>
+        </div>
+
+        <div class="d-section">
+          <h2>Tính năng nổi bật</h2>
+          <ul class="d-features" id="pFeatures"></ul>
+        </div>
+
+        <div class="d-contact-card">
+          <div>
+            <h3>Cần tư vấn trước khi mua?</h3>
+            <p>Nhắn Zalo để được hỗ trợ chọn gói phù hợp, giải đáp mọi thắc mắc.</p>
+          </div>
+          <a href="https://zalo.me/0342894222" target="_blank" rel="noopener" class="btn zalo">💬 Nhắn Zalo: 0342 894 222</a>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <span>© 2026 Mẫu Làm Video</span>
@@ -385,11 +462,145 @@
   </div>
 </div>
 
-<script src="products.js"></script>
 <script>
-  // Sinh các thẻ sản phẩm ở trang chủ từ danh sách trong products.js
+  /* =========================================================
+     DANH SÁCH SẢN PHẨM — CHỈ CẦN SỬA PHẦN NÀY
+     =========================================================
+     Mỗi lần thêm sản phẩm mới, copy 1 khối { ... } bên dưới,
+     dán vào cuối mảng (trước dấu ]), đổi "id" thành số mới
+     (chưa từng dùng), rồi điền thông tin của bạn vào.
+
+     Giải thích từng dòng:
+     - id          : số thứ tự, không được trùng với sản phẩm khác
+     - title       : tên sản phẩm
+     - subtitle    : mô tả ngắn (hiện dưới tên, ở trang chủ)
+     - discount    : % giảm giá hiện trên badge cam, để "" nếu không có
+     - isNew       : true nếu muốn hiện badge "Mới" xanh lá, false nếu không
+     - typeLabel   : chữ hiện trên badge góc phải ảnh, ví dụ "App"
+     - typeIcon    : icon nhỏ đứng trước typeLabel
+     - gradient    : màu nền khi CHƯA có video Youtube
+     - youtube     : ID video Youtube — dán vào đây, để "" nếu chưa có video
+                      (lấy từ link: youtube.com/watch?v=DÁN_ĐOẠN_NÀY)
+     - priceNow    : giá đang bán
+     - priceOld    : giá gốc (gạch ngang)
+     - desc        : mô tả dài, hiện ở trang chi tiết
+     - features    : danh sách tính năng nổi bật
+     ========================================================= */
+
+  const PRODUCTS = [
+    {
+      id: "1",
+      title: "Xây dựng KOC ảo — Thời trang nữ",
+      subtitle: "Đồng nhất · Chân thực · Hiệu quả",
+      discount: "-31%",
+      isNew: true,
+      typeLabel: "App",
+      typeIcon: "📱",
+      gradient: "linear-gradient(165deg,#2A1B5C,#141024 65%)",
+      youtube: "",
+      priceNow: "590.000đ",
+      priceOld: "850.000đ",
+      desc: "App tạo KOC ảo cho ngành thời trang nữ — giữ nguyên danh tính, gương mặt và dáng người xuyên suốt các video, giúp shop có một gương mặt đại diện nhất quán mà không cần thuê người mẫu thật.",
+      features: [
+        "Tạo KOC ảo đồng nhất giữa các video",
+        "Giữ nguyên vóc dáng, khuôn mặt, phong cách thay đồ chính xác",
+        "Ảnh chân thực, ánh sáng tự nhiên, bố cục sang trọng"
+      ]
+    },
+    {
+      id: "2",
+      title: "Auto App — Làm Video Xưởng Gia Dụng",
+      subtitle: "Tạo ảnh showroom AI & video bán hàng nhanh chóng",
+      discount: "-31%",
+      isNew: false,
+      typeLabel: "App",
+      typeIcon: "🗂",
+      gradient: "linear-gradient(165deg,#12203F,#141024 65%)",
+      youtube: "",
+      priceNow: "690.000đ",
+      priceOld: "990.000đ",
+      desc: "App tự động hoá quy trình sản xuất nội dung cho ngành đồ gia dụng — từ ảnh showroom AI đến video bán hàng, rút ngắn thời gian sản xuất nội dung xuống chỉ còn vài phút.",
+      features: [
+        "Tạo ảnh showroom AI cho sản phẩm nội thất/gia dụng",
+        "Tự động dựng video bán hàng từ ảnh sản phẩm có sẵn",
+        "Phù hợp cho xưởng sản xuất quy mô vừa và nhỏ"
+      ]
+    },
+    {
+      id: "3",
+      title: "Tư vấn review chuẩn gu — KOC",
+      subtitle: "Video mirror-selfie phong cách thời trang",
+      discount: "-44%",
+      isNew: false,
+      typeLabel: "App",
+      typeIcon: "📱",
+      gradient: "linear-gradient(165deg,#3C1030,#141024 65%)",
+      youtube: "",
+      priceNow: "450.000đ",
+      priceOld: "800.000đ",
+      desc: "App tạo video review theo phong cách mirror-selfie, phù hợp với các shop thời trang muốn có nội dung KOC tự nhiên, gần gũi mà không cần lộ mặt người thật.",
+      features: [
+        "Video mirror-selfie tự nhiên, không lộ mặt",
+        "Phong cách thời trang chuẩn gu, dễ tùy chỉnh",
+        "Tối ưu cho affiliate và bán hàng trên mạng xã hội"
+      ]
+    },
+    {
+      id: "4",
+      title: "Thanh tra kiểm chứng mỹ phẩm",
+      subtitle: "Test quảng cáo hàng nói có đúng không?",
+      discount: "-48%",
+      isNew: false,
+      typeLabel: "App",
+      typeIcon: "📱",
+      gradient: "linear-gradient(165deg,#3C1030,#0F0A22 65%)",
+      youtube: "",
+      priceNow: "390.000đ",
+      priceOld: "750.000đ",
+      desc: "App tạo video dạng kiểm chứng/test sản phẩm mỹ phẩm — định dạng nội dung đang được ưa chuộng, giúp tăng độ tin cậy cho sản phẩm khi quảng cáo.",
+      features: [
+        "Kịch bản kiểm chứng sản phẩm tự động",
+        "Định dạng nội dung tăng độ tin cậy, dễ viral",
+        "Phù hợp ngành mỹ phẩm, thực phẩm chức năng"
+      ]
+    }
+
+    /* ĐỂ THÊM SẢN PHẨM MỚI: copy khối mẫu bên dưới (bỏ dấu /* và * /),
+       dán vào ngay TRƯỚC dấu ] ở cuối danh sách, nhớ thêm dấu phẩy ,
+       sau khối phía trên nó.
+
+    ,{
+      id: "5",
+      title: "Tên sản phẩm mới",
+      subtitle: "Mô tả ngắn",
+      discount: "-20%",
+      isNew: true,
+      typeLabel: "App",
+      typeIcon: "📱",
+      gradient: "linear-gradient(165deg,#2A1B5C,#141024 65%)",
+      youtube: "",
+      priceNow: "500.000đ",
+      priceOld: "700.000đ",
+      desc: "Mô tả dài cho trang chi tiết.",
+      features: [
+        "Tính năng 1",
+        "Tính năng 2",
+        "Tính năng 3"
+      ]
+    }
+    */
+  ];
+
+  // ========================================================
+  // TỪ ĐÂY TRỞ XUỐNG LÀ CODE VẬN HÀNH — KHÔNG CẦN SỬA
+  // ========================================================
+
+  const homeView = document.getElementById('homeView');
+  const detailView = document.getElementById('detailView');
   const casesGrid = document.getElementById('casesGrid');
-  if(casesGrid && typeof PRODUCTS !== 'undefined'){
+
+  function renderCasesGrid(){
+    if(!casesGrid) return;
     casesGrid.innerHTML = PRODUCTS.map(p => {
       const thumbBg = p.youtube
         ? `background-image:url(https://img.youtube.com/vi/${p.youtube}/hqdefault.jpg); background-size:cover; background-position:center;`
@@ -400,7 +611,7 @@
         ? `<div class="badge-col">${discountBadge}${newBadge}</div>`
         : `<div></div>`;
       return `
-        <a href="chi-tiet.html?id=${p.id}" class="case-card reveal">
+        <a href="#/chi-tiet/${p.id}" class="case-card reveal">
           <div class="case-thumb" style="${thumbBg}">
             <div class="badge-row">
               ${leftBadges}
@@ -410,7 +621,55 @@
           <div class="case-info"><h4>${p.title}</h4><p>${p.subtitle}</p></div>
         </a>`;
     }).join('');
+    document.querySelectorAll('#casesGrid .reveal').forEach(el => { el.classList.remove('in'); if(io) io.observe(el); });
   }
+
+  function renderDetail(id){
+    const p = PRODUCTS.find(x => x.id === id) || PRODUCTS[0];
+    if(!p) return;
+
+    const discountBadge = p.discount ? `<span class="tag-chip discount">⚡ ${p.discount}</span>` : '';
+    const newBadge = p.isNew ? `<span class="tag-chip new">✦ Mới</span>` : '';
+    const typeBadge = `<span class="tag-chip type">${p.typeIcon} ${p.typeLabel}</span>`;
+    const badgesHtml = `<div class="badge-row" style="gap:8px;">${discountBadge}${newBadge}${typeBadge}</div>`;
+
+    document.getElementById('pTitle').textContent = p.title;
+    document.getElementById('pSubtitle').textContent = p.subtitle;
+    document.getElementById('pCrumb').textContent = p.title;
+    document.getElementById('pPriceNow').textContent = p.priceNow;
+    document.getElementById('pPriceOld').textContent = p.priceOld;
+    document.getElementById('pDesc').textContent = p.desc;
+    document.getElementById('pFeatures').innerHTML = p.features.map(f => `<li><span class="dot">✓</span>${f}</li>`).join('');
+    document.title = p.title + " — Mẫu Làm Video";
+
+    const coverEl = document.getElementById('pCover');
+    if(p.youtube){
+      coverEl.style.background = 'transparent';
+      coverEl.innerHTML = `<iframe style="position:absolute; inset:0; width:100%; height:100%; border:0; border-radius:18px;" src="https://www.youtube.com/embed/${p.youtube}" title="${p.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div style="position:absolute; top:20px; left:20px; z-index:2;">${badgesHtml}</div>`;
+    } else {
+      coverEl.style.background = p.gradient;
+      coverEl.innerHTML = badgesHtml;
+    }
+  }
+
+  // ===== Điều hướng theo # (không cần load lại trang, không cần nhiều file) =====
+  function route(){
+    const hash = window.location.hash; // ví dụ: "#/chi-tiet/2" hoặc "#/" hoặc ""
+    const match = hash.match(/^#\/chi-tiet\/(.+)$/);
+    if(match){
+      homeView.style.display = 'none';
+      detailView.style.display = 'block';
+      renderDetail(match[1]);
+      window.scrollTo(0,0);
+    } else {
+      homeView.style.display = 'block';
+      detailView.style.display = 'none';
+      document.title = "Mẫu Làm Video — AI Templates";
+    }
+    if(sidebar) sidebar.classList.remove('open');
+  }
+
+  window.addEventListener('hashchange', route);
 
   const menuBtn = document.getElementById('menuBtn');
   const sidebar = document.getElementById('sidebar');
@@ -430,10 +689,16 @@
     tick(); setInterval(tick, 1000);
   }
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  let io = null;
+  if('IntersectionObserver' in window){
+    io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+  }
+
+  renderCasesGrid();
+  document.querySelectorAll('.reveal').forEach(el => { if(io) io.observe(el); });
+  route();
 </script>
 </body>
 </html>
