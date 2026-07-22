@@ -397,7 +397,6 @@
         <a>Hướng dẫn</a>
       </nav>
       <div style="display:flex; align-items:center; gap:14px;">
-        <a href="#start" class="btn">Đăng ký / Đăng nhập</a>
         <button class="menu-btn" id="menuBtn">☰</button>
       </div>
     </header>
@@ -630,7 +629,7 @@
       typeIcon: "📱",
       gradient: "linear-gradient(165deg,#2A1B5C,#141024 65%)",
       youtube: "Hm8x3L66jTs",
-      coverImage: "https://i.postimg.cc/Kcg9jMGW/0a29876f-7f3f-43c2-9232-0853b5403899.png",
+      coverImage: "",
       priceNow: "99.000đ",
       priceOld: "0đ",
       desc: "APP được thiết kế cho mẹ và bé, chỉ cần tạo hình ảnh và đưa ra ý tưởng đạo đức chủ đạo là sẽ ra video thành sản phẩm — ví dụ em bé nhắc mẹ uống sữa, hoặc em bé nhắc mẹ tập thể dục.",
@@ -1102,7 +1101,7 @@
         const vid = thumb.dataset.youtube;
         frame = document.createElement('iframe');
         frame.className = 'hover-preview-frame';
-        frame.src = `https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&controls=0&loop=1&playlist=${vid}&modestbranding=1&playsinline=1`;
+        frame.src = `https://www.youtube.com/embed/${vid}?autoplay=1&controls=0&loop=1&playlist=${vid}&modestbranding=1&playsinline=1`;
         frame.allow = 'autoplay; encrypted-media';
         thumb.appendChild(frame);
         requestAnimationFrame(() => frame.classList.add('on'));
