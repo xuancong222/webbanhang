@@ -193,7 +193,7 @@
     position:absolute; inset:0; width:100%; height:100%; border:0; z-index:1;
     opacity:0; pointer-events:none; transition:opacity .25s ease;
   }
-  .hover-preview-frame.on{opacity:1;}
+  .hover-preview-frame.on{opacity:1; pointer-events:auto;}
   .badge-row{display:flex; justify-content:space-between; align-items:flex-start;}
   .tag-chip{
     font-size:10px; font-weight:700; padding:4px 8px; border-radius:999px; color:#fff;
@@ -278,7 +278,17 @@
   .final-cta p{font-size:15px; color:var(--text-dim); max-width:460px; margin:0 auto 26px;}
 
   .site-footer{background:var(--bg); border-top:1px solid var(--line);}
-  .footer-top{padding:40px 32px 28px; max-width:520px;}
+  .footer-top{padding:40px 32px 28px;}
+  .footer-columns{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; max-width:1216px; margin:0 auto;}
+  .footer-col-brand{max-width:420px;}
+  .footer-col-title{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:700; letter-spacing:0.08em;
+    color:var(--text-dim2); margin-bottom:14px;
+  }
+  .footer-col-text{color:var(--text-dim); font-size:13.5px; line-height:1.7;}
+  @media (max-width:900px){
+    .footer-columns{grid-template-columns:1fr; gap:28px;}
+  }
   .footer-brand-name{display:flex; align-items:center; gap:10px; font-weight:700; font-size:19px; margin-bottom:6px;}
   .footer-logo{
     width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,var(--purple),var(--blue));
@@ -541,38 +551,56 @@
     </div>
 
     <footer class="site-footer">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="footer-brand-name">
-            <span class="footer-logo">✦</span>
-            <span>Mẫu Làm<span class="accent">Video</span></span>
+      <div class="footer-top footer-columns">
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand">
+            <div class="footer-brand-name">
+              <span class="footer-logo">✦</span>
+              <span>Mẫu Làm<span class="accent">Video</span></span>
+            </div>
+            <p class="footer-tagline">Chatbot tạo Prompt tự động</p>
           </div>
-          <p class="footer-tagline">Chatbot tạo Prompt tự động</p>
+
+          <p class="footer-desc">Chia sẻ cung cấp chatbot tạo prompt tự động cho video AI. Tạo video chuyên nghiệp với VEO3, Google Flow, Seedance và các công cụ AI hàng đầu.</p>
+
+          <div class="footer-social-label">THEO DÕI CHÚNG TÔI</div>
+          <div class="footer-social-row">
+            <a href="#" class="social-icon fb" aria-label="Facebook" title="Facebook (điền link sau)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.23 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.23 22 17.08 22 12.06Z" fill="#1877F2"/><path d="M15.9 14.97l.44-2.91h-2.78v-1.88c0-.8.39-1.56 1.63-1.56h1.26V6.16s-1.15-.2-2.24-.2c-2.28 0-3.77 1.38-3.77 3.89v2.21H7.9v2.91h2.54V22a10.1 10.1 0 0 0 3.12 0v-7.03h2.34Z" fill="#fff"/></svg>
+            </a>
+            <a href="#" class="social-icon yt" aria-label="YouTube" title="YouTube (điền link sau)">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.51 3.5 12 3.5 12 3.5s-7.51 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.49 20.5 12 20.5 12 20.5s7.51 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81Z" fill="#FF0000"/><path d="M9.6 15.6V8.4L15.8 12l-6.2 3.6Z" fill="#fff"/></svg>
+            </a>
+            <a href="#" class="social-icon tt" aria-label="TikTok" title="TikTok (điền link sau)">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82c-1.02-.85-1.66-2.14-1.66-3.55h-3.02v14.32c0 1.55-1.26 2.81-2.81 2.81a2.81 2.81 0 0 1-2.81-2.81 2.81 2.81 0 0 1 2.81-2.81c.29 0 .57.04.83.13V10.9a5.9 5.9 0 0 0-.83-.06 5.84 5.84 0 0 0-5.84 5.84A5.84 5.84 0 0 0 9.11 22.5a5.84 5.84 0 0 0 5.84-5.84V9.03a7.5 7.5 0 0 0 4.38 1.4V7.4a4.47 4.47 0 0 1-2.73-1.58Z" fill="#fff"/></svg>
+            </a>
+            <a href="#" class="social-icon zalo" aria-label="Zalo" title="Zalo (điền link sau)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="12" y="16.5" text-anchor="middle" font-size="10" font-weight="800" font-family="Arial" fill="#0068FF">Zalo</text></svg>
+              <span>Zalo</span>
+            </a>
+          </div>
+
+          <div class="footer-contact">
+            <div><span class="ico">📍</span>Hà Nội, Việt Nam</div>
+            <div><span class="ico">✉️</span>phannho123@gmail.com</div>
+            <div><span class="ico">🕐</span>Hỗ trợ 24/7</div>
+          </div>
         </div>
 
-        <p class="footer-desc">Chia sẻ cung cấp chatbot tạo prompt tự động cho video AI. Tạo video chuyên nghiệp với VEO3, Google Flow, Seedance và các công cụ AI hàng đầu.</p>
-
-        <div class="footer-social-label">THEO DÕI CHÚNG TÔI</div>
-        <div class="footer-social-row">
-          <a href="#" class="social-icon fb" aria-label="Facebook" title="Facebook (điền link sau)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.23 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.23 22 17.08 22 12.06Z" fill="#1877F2"/><path d="M15.9 14.97l.44-2.91h-2.78v-1.88c0-.8.39-1.56 1.63-1.56h1.26V6.16s-1.15-.2-2.24-.2c-2.28 0-3.77 1.38-3.77 3.89v2.21H7.9v2.91h2.54V22a10.1 10.1 0 0 0 3.12 0v-7.03h2.34Z" fill="#fff"/></svg>
-          </a>
-          <a href="#" class="social-icon yt" aria-label="YouTube" title="YouTube (điền link sau)">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.51 3.5 12 3.5 12 3.5s-7.51 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.49 20.5 12 20.5 12 20.5s7.51 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81Z" fill="#FF0000"/><path d="M9.6 15.6V8.4L15.8 12l-6.2 3.6Z" fill="#fff"/></svg>
-          </a>
-          <a href="#" class="social-icon tt" aria-label="TikTok" title="TikTok (điền link sau)">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M16.6 5.82c-1.02-.85-1.66-2.14-1.66-3.55h-3.02v14.32c0 1.55-1.26 2.81-2.81 2.81a2.81 2.81 0 0 1-2.81-2.81 2.81 2.81 0 0 1 2.81-2.81c.29 0 .57.04.83.13V10.9a5.9 5.9 0 0 0-.83-.06 5.84 5.84 0 0 0-5.84 5.84A5.84 5.84 0 0 0 9.11 22.5a5.84 5.84 0 0 0 5.84-5.84V9.03a7.5 7.5 0 0 0 4.38 1.4V7.4a4.47 4.47 0 0 1-2.73-1.58Z" fill="#fff"/></svg>
-          </a>
-          <a href="#" class="social-icon zalo" aria-label="Zalo" title="Zalo (điền link sau)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="12" y="16.5" text-anchor="middle" font-size="10" font-weight="800" font-family="Arial" fill="#0068FF">Zalo</text></svg>
-            <span>Zalo</span>
-          </a>
+        <div class="footer-col">
+          <div class="footer-col-title">VỀ ADMIN</div>
+          <p class="footer-col-text">
+            <!-- Bạn tự viết nội dung giới thiệu về admin/người quản trị vào đây -->
+            Nội dung giới thiệu về admin sẽ được cập nhật sau.
+          </p>
         </div>
 
-        <div class="footer-contact">
-          <div><span class="ico">📍</span>Hà Nội, Việt Nam</div>
-          <div><span class="ico">✉️</span>phannho123@gmail.com</div>
-          <div><span class="ico">🕐</span>Hỗ trợ 24/7</div>
+        <div class="footer-col">
+          <div class="footer-col-title">CHÍNH SÁCH BẢO HÀNH</div>
+          <p class="footer-col-text">
+            <!-- Bạn tự viết nội dung chính sách bảo hành vào đây -->
+            Nội dung chính sách bảo hành sẽ được cập nhật sau.
+          </p>
         </div>
       </div>
 
@@ -1085,30 +1113,43 @@
   // Nút play tròn giữa mỗi thẻ sản phẩm -> mở video Youtube của đúng sản phẩm đó,
   // không chuyển sang trang chi tiết (chặn hành vi bấm vào link bao ngoài)
   function bindPlayButtons(){
-    document.querySelectorAll('.case-thumb .play-center').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        openLightboxMedia('youtube', btn.dataset.id);
-      });
-    });
-
-    // Rê chuột vào ảnh sản phẩm có video -> tự phát thử ngay trong khung (im lặng)
     document.querySelectorAll('.case-thumb[data-youtube]').forEach(thumb => {
+      const vid = thumb.dataset.youtube;
+      const playBtn = thumb.querySelector('.play-center');
       let frame = null;
-      thumb.addEventListener('mouseenter', () => {
+      let locked = false; // true khi đã bấm play -> video phát có tiếng, không tự tắt khi rê chuột ra
+
+      function showFrame(withSound){
         if(frame) return;
-        const vid = thumb.dataset.youtube;
         frame = document.createElement('iframe');
         frame.className = 'hover-preview-frame';
-        frame.src = `https://www.youtube.com/embed/${vid}?autoplay=1&controls=0&loop=1&playlist=${vid}&modestbranding=1&playsinline=1`;
-        frame.allow = 'autoplay; encrypted-media';
+        const params = withSound
+          ? `autoplay=1&controls=1&playsinline=1&modestbranding=1`
+          : `autoplay=1&mute=1&controls=0&loop=1&playlist=${vid}&modestbranding=1&playsinline=1`;
+        frame.src = `https://www.youtube.com/embed/${vid}?${params}`;
+        frame.allow = 'autoplay; encrypted-media; picture-in-picture';
         thumb.appendChild(frame);
         requestAnimationFrame(() => frame.classList.add('on'));
-      });
-      thumb.addEventListener('mouseleave', () => {
+        if(playBtn) playBtn.style.display = 'none';
+      }
+      function hideFrame(){
         if(frame){ frame.remove(); frame = null; }
-      });
+        if(playBtn) playBtn.style.display = '';
+      }
+
+      // Bấm nút play (điện thoại chạm, máy tính bấm chuột) -> phát ngay trong khung, có tiếng, có nút điều khiển
+      if(playBtn){
+        playBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          locked = true;
+          showFrame(true);
+        });
+      }
+
+      // Rê chuột (chỉ có trên máy tính) -> xem thử nhanh, im lặng, tự tắt khi rê ra
+      thumb.addEventListener('mouseenter', () => { if(!locked) showFrame(false); });
+      thumb.addEventListener('mouseleave', () => { if(!locked) hideFrame(); });
     });
   }
 
