@@ -1117,39 +1117,26 @@
       const vid = thumb.dataset.youtube;
       const playBtn = thumb.querySelector('.play-center');
       let frame = null;
-      let locked = false; // true khi đã bấm play -> video phát có tiếng, không tự tắt khi rê chuột ra
 
-      function showFrame(withSound){
+      function showFrame(){
         if(frame) return;
         frame = document.createElement('iframe');
         frame.className = 'hover-preview-frame';
-        const params = withSound
-          ? `autoplay=1&controls=1&playsinline=1&modestbranding=1`
-          : `autoplay=1&mute=1&controls=0&loop=1&playlist=${vid}&modestbranding=1&playsinline=1`;
-        frame.src = `https://www.youtube.com/embed/${vid}?${params}`;
+        frame.src = `https://www.youtube.com/embed/${vid}?autoplay=1&controls=1&playsinline=1&modestbranding=1`;
         frame.allow = 'autoplay; encrypted-media; picture-in-picture';
         thumb.appendChild(frame);
         requestAnimationFrame(() => frame.classList.add('on'));
         if(playBtn) playBtn.style.display = 'none';
       }
-      function hideFrame(){
-        if(frame){ frame.remove(); frame = null; }
-        if(playBtn) playBtn.style.display = '';
-      }
 
-      // Bấm nút play (điện thoại chạm, máy tính bấm chuột) -> phát ngay trong khung, có tiếng, có nút điều khiển
+      // Chỉ khi bấm vào nút play (ảnh bìa hiện sẵn bình thường) -> video mới phát, có tiếng, có nút điều khiển
       if(playBtn){
         playBtn.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          locked = true;
-          showFrame(true);
+          showFrame();
         });
       }
-
-      // Rê chuột (chỉ có trên máy tính) -> xem thử nhanh, im lặng, tự tắt khi rê ra
-      thumb.addEventListener('mouseenter', () => { if(!locked) showFrame(false); });
-      thumb.addEventListener('mouseleave', () => { if(!locked) hideFrame(); });
     });
   }
 
